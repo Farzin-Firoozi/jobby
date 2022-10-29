@@ -1,0 +1,64 @@
+@import '../../../styles/constants.scss';
+
+.root {
+  background-color: #fff;
+  border-radius: $roundness;
+  position: relative;
+  width: 100%;
+  transition: linear 200ms;
+
+  &:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+  }
+
+  .iconWrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    position: absolute;
+    top: -24px;
+    left: $spacing;
+    .icon {
+      object-fit: contain;
+      padding: 5px;
+    }
+  }
+
+  .content {
+    padding: $spacing;
+    margin-top: $spacing-small;
+
+    .info {
+      color: $text2-color;
+      font-size: 16px;
+      font-weight: 500;
+
+      .dot {
+        width: 4px;
+        height: 4px;
+        background-color: $text2-color;
+        display: inline-block;
+        border-radius: 4px;
+        margin: 0 $spacing-small;
+      }
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 700;
+      color: $text-color;
+      margin: $spacing 0;
+      text-overflow: ellipsis;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .location {
+      font-size: 16px;
+      font-weight: 700;
+      color: $primary-color;
+      margin-top: $spacing;
+    }
+  }
+}

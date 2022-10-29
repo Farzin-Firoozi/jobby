@@ -1,0 +1,24 @@
+@import '../../../styles/constants.scss';
+
+.root {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  .label {
+    font-size: 16px;
+    font-weight: 700;
+    color: $text-color;
+    white-space: nowrap;
+  }
+
+  .box {
+    width: 26px;
+    height: 26px;
+    background-color: $gray-color;
+    border-radius: $roundness;
+    margin-right: $spacing-small;
+    flex-shrink: 0;
+    position: relative;
+  }
+}

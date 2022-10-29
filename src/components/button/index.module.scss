@@ -1,0 +1,11 @@
+@import '../../../styles/constants.scss';
+
+.root {
+  height: 48px;
+  border-radius: $roundness;
+  background-color: $primary-color;
+  color: #fff;
+  font-weight: 700;
+  width: 100%;
+  font-size: 16px;
+}

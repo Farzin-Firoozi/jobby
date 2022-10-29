@@ -1,0 +1,21 @@
+.loader {
+  animation: loader-rotate 4s linear infinite;
+  margin: auto;
+  height: 32px;
+  width: 32px;
+
+  .inside {
+    height: 32px;
+    width: 32px;
+    animation: loader-rotate 1s ease-in-out infinite;
+  }
+}
+
+@keyframes loader-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
