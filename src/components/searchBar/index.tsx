@@ -8,6 +8,7 @@ import styles from './index.module.scss'
 import Button from '../button'
 import CheckBox from '../checkBox'
 import { useRouter } from 'next/router'
+import FilterModal from './modal'
 
 const SearchBar = () => {
   const router = useRouter()
@@ -18,14 +19,20 @@ const SearchBar = () => {
   const [location, setLocation] = useState('')
   const [fullTimeOnly, setFullTimeOnly] = useState(false)
 
+  const [showFilterModal, setShowFilterModal] = useState(false)
+
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
 
-    router.push({
-      pathname: '/',
-      query: { keyword, location, fullTimeOnly },
-    })
+    router.push(
+      {
+        pathname: '/',
+        query: { keyword, location, fullTimeOnly },
+      },
+      undefined,
+      { shallow: false }
+    )
   }
 
   useEffect(() => {
@@ -36,7 +43,7 @@ const SearchBar = () => {
     if (loading) {
       setLoading(false)
     }
-  }, [router.asPath])
+  }, [router])
 
   return (
     <form className={styles.root} onSubmit={onSubmit}>
@@ -89,6 +96,25 @@ const SearchBar = () => {
           Search
         </Button>
       </div>
+
+      <div className={styles.mobileActions}>
+        <button
+          className={styles.filter}
+          onClick={() => setShowFilterModal(true)}
+          type="button"
+        >
+          <Image alt="filter" src="/filter.svg" width={32} height={32} />
+        </button>
+
+        <Button className={styles.search} type="submit" loading={loading}>
+          <Image alt="Search" src="/search-white.svg" width={24} height={24} />
+        </Button>
+      </div>
+
+      <FilterModal
+        open={showFilterModal}
+        onClose={() => setShowFilterModal(false)}
+      />
     </form>
   )
 }

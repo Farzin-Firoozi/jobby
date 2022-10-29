@@ -6,5 +6,22 @@
     grid-template-columns: repeat(3, 1fr);
     column-gap: $spacing;
     row-gap: 48px;
+    margin-top: $spacing;
+    padding-top: $spacing;
+  }
+  .more {
+    margin: $spacing auto;
+    max-width: 200px;
+  }
+
+  @media (max-width: 1024px) {
+    .jobs {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 760px) {
+    .jobs {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 }

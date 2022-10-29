@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import Head from 'next/head'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 
@@ -9,9 +11,40 @@ import SearchBar from '../src/components/searchBar'
 import type { JobItem } from '../src/components/job'
 
 import styles from '../styles/Home.module.scss'
+import { useRouter } from 'next/router'
+import Button from '../src/components/button'
 
 export default function Home(props: JobsServerSideProps) {
-  const { data } = props
+  const { data, meta } = props
+
+  const [clientData, setClientData] = useState(data)
+  const [clientMeta, setClientMeta] = useState(meta)
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setClientData(data)
+  }, [data])
+
+  useEffect(() => {
+    setClientMeta(meta)
+  }, [meta])
+
+  const hasMoreData =
+    clientMeta?.page * clientMeta?.pageSize < clientMeta?.total
+
+  const router = useRouter()
+
+  const onLoadMore = () => {
+    setLoading(true)
+    console.log({ ...router.query, page: clientMeta.page + 1 })
+    api.jobs
+      .all({ ...router.query, page: clientMeta.page + 1 })
+      .then((res) => {
+        setClientData([...data, ...res?.data?.result?.items])
+        setClientMeta(res?.data?.result?.meta)
+      })
+      .finally(() => setLoading(false))
+  }
 
   return (
     <Layout>
@@ -24,20 +57,37 @@ export default function Home(props: JobsServerSideProps) {
           />
         </Head>
 
-        <SearchBar />
+        <div className={styles.searchbar}>
+          <SearchBar />
+        </div>
 
         <div className={styles.jobs}>
-          {data.map((item) => (
+          {clientData.map((item) => (
             <JobCard item={item} key={item.id} />
           ))}
         </div>
+
+        {hasMoreData && (
+          <div className={styles.more}>
+            <Button loading={loading} onClick={onLoadMore}>
+              Load More
+            </Button>
+          </div>
+        )}
       </div>
     </Layout>
   )
 }
 
+type SearchResultMeta = {
+  page: number
+  pageSize: number
+  total: number
+}
+
 type JobsServerSideProps = {
   data: Array<JobItem>
+  meta: SearchResultMeta
 }
 
 export const getServerSideProps: GetServerSideProps<
@@ -49,6 +99,7 @@ export const getServerSideProps: GetServerSideProps<
     return {
       props: {
         data: jobs?.data?.result?.items || [],
+        meta: jobs?.data?.result?.meta,
       },
     }
   } catch (error) {
@@ -57,6 +108,7 @@ export const getServerSideProps: GetServerSideProps<
     return {
       props: {
         data: [],
+        meta: {},
       },
     }
   }

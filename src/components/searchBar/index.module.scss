@@ -11,7 +11,7 @@
   .section {
     display: flex;
     align-items: center;
-
+    height: 72px;
     padding: $spacing-small;
 
     .icon {
@@ -44,5 +44,39 @@
 
   .borderRight {
     border-right: $gray-color 1px solid;
+  }
+
+  .mobileActions {
+    display: none;
+    padding: $spacing-small;
+
+    .filter {
+      background-color: transparent;
+      margin-right: $spacing-small;
+    }
+
+    .search {
+      width: 48px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .section {
+      .icon {
+        display: none;
+      }
+    }
+    .small {
+      display: none;
+    }
+    .borderRight {
+      border-right: none;
+    }
+
+    .mobileActions {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+    }
   }
 }
