@@ -12,13 +12,15 @@ const axios_instance = axios.create({
   },
 })
 
-const request = async (method, url, data = {}, config = {}) => {
+const request = async (method: string, url: string, data = {}, config = {}) => {
   const headers = {}
 
   const request = {
     headers: { ...headers },
     method,
     url,
+    data: {},
+    params: {},
     ...config,
   }
 
@@ -30,13 +32,13 @@ const request = async (method, url, data = {}, config = {}) => {
 }
 
 const res = {
-  delete: (url, data = {}) => request('delete', url, data),
-  get: (url, data = {}) => request('get', url, data),
-  patch: (url, data = {}) => request('patch', url, data),
-  post: (url, data = {}) => {
+  delete: (url: string, data = {}) => request('delete', url, data),
+  get: (url: string, data = {}) => request('get', url, data),
+  patch: (url: string, data = {}) => request('patch', url, data),
+  post: (url: string, data = {}) => {
     return request('post', url, data)
   },
-  put: (url, data = {}) => request('put', url, data),
+  put: (url: string, data = {}) => request('put', url, data),
 }
 
 export default res
