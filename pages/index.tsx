@@ -36,7 +36,6 @@ export default function Home(props: JobsServerSideProps) {
 
   const onLoadMore = () => {
     setLoading(true)
-    console.log({ ...router.query, page: clientMeta.page + 1 })
     api.jobs
       .all({ ...router.query, page: clientMeta.page + 1 })
       .then((res) => {
@@ -105,8 +104,6 @@ export const getServerSideProps: GetServerSideProps<
       },
     }
   } catch (error) {
-    console.warn(error)
-
     return {
       props: {
         data: [],

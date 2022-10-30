@@ -155,8 +155,6 @@ export const getServerSideProps: GetServerSideProps<
       },
     }
   } catch (error) {
-    console.warn(error)
-
     return {
       notFound: true,
     }
