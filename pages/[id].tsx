@@ -147,7 +147,7 @@ export const getServerSideProps: GetServerSideProps<
   JobDetailServerSideProps
 > = async (context: GetServerSidePropsContext) => {
   try {
-    const jobs = await api.jobs.one(context.params?.id)
+    const jobs = await api.jobs.one(Number(context.params?.id))
 
     return {
       props: {
