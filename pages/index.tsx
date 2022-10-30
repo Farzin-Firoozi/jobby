@@ -10,7 +10,7 @@ import { Layout } from '../src/components/layout'
 import SearchBar from '../src/components/searchBar'
 import type { JobItem } from '../src/components/job'
 
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/home.module.scss'
 import { useRouter } from 'next/router'
 import Button from '../src/components/button'
 
@@ -56,6 +56,8 @@ export default function Home(props: JobsServerSideProps) {
             content="We have part-time and full-time jobs hiring now. "
           />
         </Head>
+
+        <h1 className="hidden-title">Jobby | Find Your Dream Job</h1>
 
         <div className={styles.searchbar}>
           <SearchBar />

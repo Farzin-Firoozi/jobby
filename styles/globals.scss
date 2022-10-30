@@ -6,6 +6,11 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   background-color: $bg-color;
+  height: 100%;
+
+  #__next {
+    height: 100%;
+  }
 }
 
 a {
@@ -25,4 +30,8 @@ input {
 button {
   border: none;
   cursor: pointer;
+}
+
+.hidden-title {
+  display: none;
 }

@@ -19,10 +19,11 @@
     position: absolute;
     top: -24px;
     left: $spacing;
-    .icon {
-      object-fit: contain;
-      padding: 5px;
-    }
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .content {

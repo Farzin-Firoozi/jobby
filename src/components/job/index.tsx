@@ -1,4 +1,5 @@
-import Image from 'next/image'
+/* eslint-disable @next/next/no-img-element */
+import Link from 'next/link'
 import React from 'react'
 import Moment from 'react-moment'
 
@@ -17,35 +18,32 @@ export type JobItem = {
 
 const JobCard = ({ item }: { item: JobItem }) => {
   return (
-    <div className={styles.root}>
-      <div
-        className={styles.iconWrapper}
-        style={{ backgroundColor: item.logoBackground }}
-      >
-        <Image
-          src={item.logo}
-          alt={item.company}
-          fill
-          className={styles.icon}
-        />
-      </div>
-
-      <div className={styles.content}>
-        <div className={styles.info}>
-          <span>
-            <Moment date={item.postedAt} fromNow />
-          </span>
-          <span className={styles.dot} />
-          <span>{item.contract}</span>
+    <Link href={`/${item.id}`}>
+      <section className={styles.root}>
+        <div
+          className={styles.iconWrapper}
+          style={{ backgroundColor: item.logoBackground }}
+        >
+          <img src={item.logo} alt={item.company} width="100%" />
         </div>
 
-        <h2>{item.position}</h2>
+        <div className={styles.content}>
+          <div className={styles.info}>
+            <span>
+              <Moment date={item.postedAt} fromNow />
+            </span>
+            <span className={styles.dot} />
+            <span>{item.contract}</span>
+          </div>
 
-        <div className={styles.info}>{item.company}</div>
+          <h2>{item.position}</h2>
 
-        <div className={styles.location}>{item.location}</div>
-      </div>
-    </div>
+          <div className={styles.info}>{item.company}</div>
+
+          <div className={styles.location}>{item.location}</div>
+        </div>
+      </section>
+    </Link>
   )
 }
 

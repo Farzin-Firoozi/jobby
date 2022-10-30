@@ -1,0 +1,210 @@
+@import '../styles/constants.scss';
+
+.root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .heading {
+    font-size: 16px;
+    font-weight: 700;
+    color: $text-color;
+  }
+
+  .infoText {
+    font-size: 14px;
+    color: $text2-color;
+    line-height: 24px;
+  }
+
+  .companyInfo {
+    display: flex;
+    align-items: center;
+
+    border-radius: $roundness;
+    background-color: #fff;
+    margin-bottom: $spacing;
+    overflow: hidden;
+
+    .logoWrapper {
+      height: 150px;
+      width: 150px;
+      flex-shrink: 0;
+      padding: $spacing;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .content {
+      width: 100%;
+      padding: $spacing;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .companyTitle {
+        font-size: 20px;
+        margin-bottom: $spacing-small;
+      }
+    }
+
+    .companyButton {
+      width: 150px;
+      background-color: $secondary-color;
+      color: $primary-color;
+    }
+
+    @media (max-width: 1024px) {
+      width: 100%;
+      position: relative;
+      overflow: visible;
+      flex-direction: column;
+      align-items: center;
+      margin-top: $spacing;
+
+      .logoWrapper {
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
+        position: absolute;
+        top: -36px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: $spacing;
+        width: 100%;
+      }
+
+      .companyButton {
+        width: 80%;
+        min-width: 150px;
+        margin-top: $spacing;
+        background-color: $secondary-color;
+        color: $primary-color;
+      }
+    }
+  }
+
+  .main {
+    border-radius: $roundness;
+    background-color: #fff;
+    padding: $spacing;
+
+    .content {
+      display: flex;
+      margin-bottom: $spacing;
+      justify-content: space-between;
+      align-items: center;
+
+      .button {
+        width: 150px;
+      }
+
+      .info {
+        color: $text2-color;
+        font-size: 16px;
+        font-weight: 500;
+
+        .dot {
+          width: 4px;
+          height: 4px;
+          background-color: $text2-color;
+          display: inline-block;
+          border-radius: 4px;
+          margin: 0 $spacing-small;
+        }
+      }
+
+      .title {
+        font-size: 24px;
+        font-weight: 900;
+        color: $text-color;
+        margin: $spacing-small 0;
+        text-overflow: ellipsis;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .location {
+        font-size: 16px;
+        font-weight: 700;
+        color: $primary-color;
+      }
+    }
+
+    .description {
+      margin: $spacing 0;
+    }
+
+    .list {
+      display: flex;
+      margin-bottom: $spacing-small;
+
+      .dot {
+        width: 4px;
+        height: 4px;
+        background-color: $text2-color;
+        border-radius: 4px;
+        margin-right: $spacing-small;
+        flex-shrink: 0;
+        margin-top: 8px;
+      }
+
+      .primary {
+        flex-shrink: 0;
+        font-weight: 700;
+        color: $primary-color;
+        margin-right: $spacing-small;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .content {
+        flex-direction: column;
+        align-items: flex-start;
+        .button {
+          width: 100%;
+          margin-top: $spacing;
+        }
+      }
+    }
+  }
+
+  .apply {
+    width: 100%;
+    background-color: white;
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .button {
+      width: 150px;
+    }
+
+    @media (max-width: 1024px) {
+      .content {
+        .button {
+          width: 100%;
+        }
+        .heading,
+        .infoText {
+          display: none;
+        }
+      }
+    }
+  }
+}

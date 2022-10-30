@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 
-import Image from 'next/image'
 import classnames from 'classnames'
 
 import styles from './index.module.scss'
@@ -25,7 +25,7 @@ const CheckBox = (props: CheckBoxProps) => {
       onClick={onClickHandler}
     >
       <div className={styles.box}>
-        {isSelected && <Image src="/check.svg" fill alt="" />}
+        {isSelected && <img src="/check.svg" width="100%" alt="" />}
       </div>
       <div className={styles.label}>{label}</div>
     </div>

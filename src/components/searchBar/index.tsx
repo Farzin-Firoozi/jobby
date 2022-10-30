@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react'
 
-import Image from 'next/image'
 import classnames from 'classnames'
 
 import styles from './index.module.scss'
@@ -24,6 +24,10 @@ const SearchBar = () => {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
+
+    if (showFilterModal) {
+      setShowFilterModal(false)
+    }
 
     router.push(
       {
@@ -50,7 +54,7 @@ const SearchBar = () => {
       <div
         className={classnames(styles.section, styles.big, styles.borderRight)}
       >
-        <Image
+        <img
           src="/search-primary.svg"
           alt="Search"
           width={24}
@@ -69,7 +73,7 @@ const SearchBar = () => {
       <div
         className={classnames(styles.section, styles.small, styles.borderRight)}
       >
-        <Image
+        <img
           src="/location-primary.svg"
           alt="Search"
           width={24}
@@ -103,15 +107,19 @@ const SearchBar = () => {
           onClick={() => setShowFilterModal(true)}
           type="button"
         >
-          <Image alt="filter" src="/filter.svg" width={32} height={32} />
+          <img alt="filter" src="/filter.svg" width={32} height={32} />
         </button>
 
         <Button className={styles.search} type="submit" loading={loading}>
-          <Image alt="Search" src="/search-white.svg" width={24} height={24} />
+          <img alt="Search" src="/search-white.svg" width={24} height={24} />
         </Button>
       </div>
 
       <FilterModal
+        fullTimeOnly={fullTimeOnly}
+        setFullTimeOnly={setFullTimeOnly}
+        location={location}
+        setLocation={setLocation}
         open={showFilterModal}
         onClose={() => setShowFilterModal(false)}
       />
