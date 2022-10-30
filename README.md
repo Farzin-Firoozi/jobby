@@ -1,34 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Jobby
 
-## Getting Started
+https://Jabama.com | Dev jobs code challenge
 
-First, run the development server:
+This is a job explorer application where users could see a list of job opportunities and apply for their desired job.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Structure
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project is built on top of Next.js in order to use `server-side rendering`.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Routes are defined in `pages` folder as needed.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+There is a `src` folder containing `api` which is used for making web requestes and a `component`
+folder containing all used components in the app.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Online Demo
 
-## Learn More
+https://jobby-farzin-firoozi.vercel.app
 
-To learn more about Next.js, take a look at the following resources:
+## LightHouse Result
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<img src="https://jobby-farzin-firoozi.vercel.app/lighthouse-result.png" />
